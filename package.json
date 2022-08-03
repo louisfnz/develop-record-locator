@@ -1,0 +1,31 @@
+{
+  "name": "louisfnz.develop-record-locator",
+  "description": "Develop Record Locator",
+  "version": "0.1.0",
+  "author": "louisfnz",
+  "repository": {
+    "type": "git",
+    "url": "TODO: Add the GitHub URL to your extension in package.json"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^17.0.47",
+    "@types/react-dom": "^17.0.17",
+    "prettier": "^2.7.1"
+  },
+  "ahaExtension": {
+    "contributes": {
+      "views": {
+        "teamLocation": {
+          "title": "Team Location",
+          "entryPoint": "src/views/teamLocation.tsx",
+          "host": "attribute",
+          "recordTypes": [
+            "Feature",
+            "Requirement"
+          ]
+        }
+      }
+    }
+  }
+}
