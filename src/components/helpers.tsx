@@ -68,12 +68,10 @@ export const determineLocation = async (
     const completedDate = await getCompletedDate(record.id, record.typename);
 
     if (completedDate) {
-      console.log('completedDate', completedDate);
       const daysSinceCompletion = daysDifference(
         new Date(completedDate),
         new Date()
       );
-      console.log('daysSinceCompletion', daysSinceCompletion);
       if (daysSinceCompletion > 7) {
         return <span style={{ fontStyle: 'italic' }}>Record completed</span>;
       }
