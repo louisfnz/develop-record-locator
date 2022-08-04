@@ -19,7 +19,9 @@ const Location = ({ fields, record }) => {
     });
   }, [record]);
 
-  if (loading || !location) return null;
+  if (loading) return <aha-spinner />
+
+  if (!location) return null;
 
   return (
     <>
