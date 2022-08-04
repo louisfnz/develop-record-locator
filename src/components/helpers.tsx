@@ -43,12 +43,12 @@ export const getRecord = (
 ): Aha.Feature | Aha.Requirement => {
   return Model.select('id', 'referenceNum')
     .merge({
-      project: aha.models.Project.select(
+      team: aha.models.Project.select(
         'id',
         'backlogManagementEnabled',
         'iterationsEnabled'
       ).merge({ currentIteration: ['id'] }),
-      team: ['id'],
+      project: ['id'],
       iteration: ['id', 'name'],
       teamWorkflowStatus: aha.models.WorkflowStatus.select(
         'id',
@@ -82,11 +82,11 @@ export const determineLocation = async (
     return <span style={{ color: 'var(--theme-accent-icon)' }}>N/A</span>;
   } else {
     let recordLocation;
-    if (!record.project.backlogManagementEnabled) {
+    if (!record.team.backlogManagementEnabled) {
       return 'Workflow board';
     }
-    if (record.project.iterationsEnabled && record.iteration?.id) {
-      if (record.iteration.id === record.project.currentIteration.id)
+    if (record.team.iterationsEnabled && record.iteration?.id) {
+      if (record.iteration.id === record.team.currentIteration.id)
         return `Workflow board - ${record.iteration.name}`;
     }
 
